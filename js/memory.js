@@ -13,8 +13,8 @@ class MemoryGame {
     while (arrayLength.length >0 ){
       arrayLength--;
       let currentCard = this.card[arrayLength];
-      let randomIdx = Math.floor(Math.random()*array.length);
-      this.cards[array.length] = this.cards[randomIdx];
+      let randomIdx = Math.floor(Math.random()*arrayLength);
+      this.cards[arrayLength] = this.cards[randomIdx];
       this.cards[randomIdx] = currentCard;
     } this.shuffleCards();
   }
