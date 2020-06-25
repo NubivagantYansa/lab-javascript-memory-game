@@ -54,13 +54,11 @@ window.addEventListener('load', event => {
         const firstElementName = firstElement.getAttribute("data-card-name");
         const secondElementName = secondElement.getAttribute("data-card-name");
 
-      //TODO Now when you have cards flipping from back to front and vice versa, you have to make sure you call .checkIfPair(card1, card2) method. If the two cards are the same, they should get class blocked, which is going to keep them flipped so we can see images.
-
-      let checked = memoryGame.checkIfPair(firstElementName, secondElementName); 
-      if (checked === true){
-        firstElement.classList.add('blocked');
-        secondElement.classList.add ('class', 'blocked');
-      }  
+          if ((memoryGame.checkIfPair(firstElementName, secondElementName)) === true){
+            firstElement.classList.add('blocked');
+            secondElement.classList.add ('blocked');
+          }  
+          
     }
 
       console.log(`Card clicked: ${card}`);
