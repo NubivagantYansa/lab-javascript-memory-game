@@ -38,11 +38,33 @@ window.addEventListener('load', event => {
 
   // Add all the divs to the HTML
   document.querySelector('#memory-board').innerHTML = html;
-
+  function toggle(element, classes){
+    classes.forEach(className => element.classList.toggle(className))
+  }
   // Bind the click event of each element to a function
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
-      // TODO: write some code here
+      toggle(card.children[0],["back", "front"]);
+      toggle(card.children[1],["back", "front"]);
+      
+      MemoryGame.pickedCards.push(card);
+      if (MemoryGame.pickedcards.length ===2){
+        const firstElement = MemoryGame.pickedCards[0];
+        const secondElement = MemoryGame.pickedCards[1];
+        const firstElementName = firstElement.getAttribute("data-card-name");
+        const secondElementName = secondElement.getAttribute("data-card-name");
+      
+      }
+
+      //TODO Now when you have cards flipping from back to front and vice versa, you have to make sure you call .checkIfPair(card1, card2) method. If the two cards are the same, they should get class blocked, which is going to keep them flipped so we can see images.
+
+      let checked = checkIfPair(firstElementName, secondElementName); //see memory.js
+      if (checked === true){
+        firstElementName.setAttribute ('card', 'blocked');
+        secondElementName.setAttribute ('card', 'blocked');
+      } 
+
+
       console.log(`Card clicked: ${card}`);
     });
   });
